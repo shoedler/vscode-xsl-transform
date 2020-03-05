@@ -36,8 +36,7 @@ export async function runXSLTransformation(): Promise<void>
     return;
   }
 
-
-  if (window.activeTextEditor === undefined) 
+  if (window.activeTextEditor === undefined)  
   {
     window.showErrorMessage("No valid XML file opened");
     return;

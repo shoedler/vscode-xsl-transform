@@ -45,7 +45,19 @@
 				"command": "xsl.setStylesheet",
 				"title": "Set XSL Stylesheet"
 			}
-		]
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "xsl.transform",
+					"when": "editorLangId == xml"
+				},
+				{
+					"command": "xsl.transform",
+					"when": "editorLangId == xml || editorLangId == xsl"
+				}				
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

@@ -1,0 +1,67 @@
+{
+	"name": "vscode-xsl-transform",
+	"displayName": "XSL Transform",
+	"description": "An extension to perform XSL-transformations with the Saxon XSLT processor",
+	"publisher": "WashirePie",
+	"version": "0.0.3",
+	"engines": {
+		"vscode": "^1.42.1"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:xsl.transform",
+		"onCommand:xsl.setStylesheet"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/WashirePue/vscode-xsl-transform.git"
+	},
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "XSL Transform",
+			"properties": {
+				"xsl.processor": {
+					"type": "string",
+					"default": "",
+					"description": "Path to the Saxon XSLT processor (.jar)"
+				},
+				"xsl.stylesheet": {
+					"type": "string",
+					"default": "",
+					"description": "Path to active XSL / XSLT File"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "xsl.transform",
+				"title": "Transform Document"
+			},
+			{
+				"command": "xsl.setStylesheet",
+				"title": "Set XSL Stylesheet"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.39.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"tslint": "^5.12.1",
+		"vscode-test": "^1.2.0"
+	}
+}

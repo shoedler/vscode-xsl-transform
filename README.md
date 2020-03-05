@@ -7,8 +7,11 @@
   <br>
 </h1>
 
+<p align="center">
+  <a href="https://github.com/WashirePie/vscode-xsl-transform"><img src="https://img.shields.io/github/workflow/status/WashirePie/vscode-xsl-transform/Node.js%20CI.svg?logo=github" alt="vsts"></a>
+</p>
 
-![Node.js CI](https://github.com/WashirePie/vscode-xsl-transform/workflows/Node.js%20CI/badge.svg)
+
 
 ## Description
 Apply XSL transformations with the help of the external Saxon processor.

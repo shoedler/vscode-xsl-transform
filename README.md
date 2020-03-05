@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-    <img src="icon.png" alt="logo" width="200">
+    <img src="./icon.png" alt="logo" width="200">
   <br>
   XSL-Transform Extension for Visual Studio Code
   <br>
@@ -31,7 +31,7 @@ This extension contributes the following settings:
 ## Known Issues
 None
 
-> A fork of [Svens XSLT Extension](https://marketplace.visualstudio.com/items?itemName=SvenAGN.xslt-transform)
-
 ## License
 XSL transform is licensed under [MIT License](https://github.com/WashirePie/vscode-xsl-transform/blob/master/LICENSE).
+
+> A fork of [Svens XSLT Extension](https://marketplace.visualstudio.com/items?itemName=SvenAGN.xslt-transform)

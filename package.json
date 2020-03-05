@@ -18,7 +18,7 @@
 		"type": "git",
 		"url": "https://github.com/WashirePue/vscode-xsl-transform.git"
 	},
-	"icon": "./icon.png",
+	"icon": "icon.png",
 	"main": "./out/extension.js",
 	"contributes": {
 		"configuration": {

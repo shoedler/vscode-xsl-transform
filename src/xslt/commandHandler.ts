@@ -5,7 +5,7 @@ import { XSLTransformation } from "./xsltTransform";
 
 export async function executeXSLTransformCommand(transformation: XSLTransformation) 
 {
-  let cmd = `java -jar ${transformation.processor} -s:- -xsl:${transformation.xslt}`;
+  let cmd = `java -jar ${transformation.processor} -s:- -xsl:"${transformation.xslt}"`;
   let cwd: string | undefined;
   let commandRunner: Runner = new Runner();
 

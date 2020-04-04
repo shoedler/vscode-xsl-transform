@@ -73,7 +73,16 @@ export async function runXSLTransformation(context?: ExtensionContext | undefine
           } else if (iChoice == 0){
             // from Stylesheet
             let storage = context!.globalStoragePath;
-            tmpFile = '' + storage + '\\tmp.xsl'
+            if (fs.existsSync(storage)){
+              console.log('storage exists');
+            } else {
+              console.log('creating storage');
+              fs.mkdirSync(storage);
+              console.log('file created');
+            }
+            
+            tmpFile = '' + storage + '\\tmp.xsl';
+            fs.writeFileSync(tmpFile, '');
             // TODO: only works on windows, I suppose (because of backslash)
             console.log(`trying to cache ${target} to ${tmpFile}`);
             fetchAndSaveFile(target, tmpFile);

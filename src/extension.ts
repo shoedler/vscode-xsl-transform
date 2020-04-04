@@ -10,7 +10,7 @@ export function activate(context: ExtensionContext)
 {
   context.subscriptions.push(commands.registerCommand("xsl.transform", async () => 
   {
-    await runXSLTransformation();
+    await runXSLTransformation(context);
   }));
 
   context.subscriptions.push(commands.registerCommand("xsl.setStylesheet", async () =>

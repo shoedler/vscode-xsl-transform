@@ -11,6 +11,7 @@ export function activate(context: ExtensionContext)
   context.subscriptions.push(commands.registerCommand("xsl.transform", async () => 
   {
     await runXSLTransformation(context);
+    //FIXME: commented out stylesheet is still applied.
   }));
 
   context.subscriptions.push(commands.registerCommand("xsl.setStylesheet", async () =>

@@ -12,6 +12,7 @@ export function activate(context: ExtensionContext)
   {
     await runXSLTransformation(context);
     //FIXME: commented out stylesheet is still applied.
+    //FIXME: local files cause error: invalid URL
   }));
 
   context.subscriptions.push(commands.registerCommand("xsl.setStylesheet", async () =>

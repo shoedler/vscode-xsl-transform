@@ -2,8 +2,8 @@
 	"name": "vscode-xsl-transform",
 	"displayName": "XSL Transform",
 	"description": "An extension to perform XSL transformations with the Saxon XSLT processor",
-	"publisher": "WashirePie",
-	"version": "1.0.2",
+	"publisher": "Balduin",
+	"version": "1.0.3",
 	"license": "MIT",
 	"engines": {
 		"vscode": "^1.43.1"

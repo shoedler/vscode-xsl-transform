@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Template XML File by Balduin Landolt, 02.04.2020. Licensed under MIT License. -->
+<?xml-stylesheet type="text/xsl" href="http://www.menota.org/menota_xslt_3_facs.xsl"?>
+<TEI  xmlns="http://www.tei-c.org/ns/1.0"
+    xmlns:me="http://www.menota.org/ns/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/BalduinLandolt/menota-xsd-schema/master/menota.xsd">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title></title>
+            </titleStmt>
+            <editionStmt>
+                <p></p>
+            </editionStmt>
+            <extent></extent>
+            <publicationStmt>
+                <p></p>
+            </publicationStmt>
+            <notesStmt>
+                <note></note>
+            </notesStmt>
+            <sourceDesc>
+                <p></p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div>
+                <p>
+                    <w>
+                        <me:facs>
+                            blah
+                        </me:facs>
+                        <me:dipl>
+                            blah
+                        </me:dipl>
+                        <me:norm>
+                            blah
+                        </me:norm>
+                    </w>
+                </p>
+            </div>
+        </body>
+    </text>
+</TEI>

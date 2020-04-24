@@ -4,6 +4,7 @@ import * as url from "url";
 import * as http from "http";
 import * as https from "https";
 import * as fs from "fs";
+import * as path from "path";
 
 export interface XSLTransformation 
 {
@@ -135,32 +136,52 @@ async function determineStylesheetToUse(context: ExtensionContext, stylesheetCon
 }
 
 function getLocallyAccessibleCopyOfStylesheet(context: ExtensionContext, target: string){
-  let res = '';
+  let file = undefined;
 
-  // TODO: check if local file. If so, just set that
+  if (target.startsWith("http") || target.startsWith("www")){
+    // cache from web
+    // TODO: Could there be other options, how the URL starts?
 
-  // TODO: only do the following caching, if it's an online file
-  let storage = context!.globalStoragePath;
-  if (fs.existsSync(storage)){
-    console.log('storage exists');
+    // ensure the storage path exists
+    let storage = context!.globalStoragePath;
+    if (fs.existsSync(storage)){
+      console.log('storage exists');
+    } else {
+      console.log('creating storage');
+      fs.mkdirSync(storage);
+      console.log('file created');
+    }
+
+    // cache stylesheet
+    let tmpFile = path.join(storage, "tmp.xsl")
+    fs.writeFileSync(tmpFile, '');
+    console.log(`trying to cache ${target} to ${tmpFile}`);
+    fetchAndSaveFile(target, tmpFile);
+    console.log(tmpFile);
+    file = tmpFile
+    // LATER: if wanted: mark temp file as to be deleted, and delete later
   } else {
-    console.log('creating storage');
-    fs.mkdirSync(storage);
-    console.log('file created');
+    // assume, it's a local file
+    if (path.isAbsolute(target)){
+      file = target;
+    } else {
+      let xmlDir = path.dirname(window.activeTextEditor!.document.fileName);
+      file = path.resolve(xmlDir, target);
+    }
+
+    file = path.normalize(file);
+    if (fs.existsSync(file)){
+      return file;
+    } else {
+      return undefined;
+    }
   }
-  
-  let tmpFile = '' + storage + '\\tmp.xsl';
-  fs.writeFileSync(tmpFile, '');
-  // LATER: only works on windows, I suppose (because of backslash)
-  console.log(`trying to cache ${target} to ${tmpFile}`);
-  fetchAndSaveFile(target, tmpFile);
-  console.log(tmpFile);
-  res = tmpFile;
+
 
   // TODO: check, if file is accessible, if not, return undefined
-  console.log(`locally accessible file: ${res}`);
+  console.log(`locally accessible file: ${file}`);
   
-  return res;
+  return file;
 }
 
 export async function runXSLTransformation(context?: ExtensionContext | undefined): Promise<void> 

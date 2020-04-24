@@ -14,6 +14,7 @@ export function activate(context: ExtensionContext)
     //FIXME: commented out stylesheet is still applied.
     //FIXME: local files cause error: invalid URL
     //LATER: settings for storing/deleting cached stylesheets
+    //LATER: can I include saxon directly in package?
   }));
 
   context.subscriptions.push(commands.registerCommand("xsl.setStylesheet", async () =>

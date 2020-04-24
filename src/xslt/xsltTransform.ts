@@ -136,8 +136,6 @@ async function determineStylesheetToUse(context: ExtensionContext, stylesheetCon
 }
 
 function getLocallyAccessibleCopyOfStylesheet(context: ExtensionContext, target: string){
-  let file = undefined;
-
   if (target.startsWith("http") || target.startsWith("www")){
     // cache from web
     // TODO: Could there be other options, how the URL starts?
@@ -158,10 +156,11 @@ function getLocallyAccessibleCopyOfStylesheet(context: ExtensionContext, target:
     console.log(`trying to cache ${target} to ${tmpFile}`);
     fetchAndSaveFile(target, tmpFile);
     console.log(tmpFile);
-    file = tmpFile
+    return tmpFile;
     // LATER: if wanted: mark temp file as to be deleted, and delete later
   } else {
     // assume, it's a local file
+    let file = undefined;
     if (path.isAbsolute(target)){
       file = target;
     } else {
@@ -176,12 +175,6 @@ function getLocallyAccessibleCopyOfStylesheet(context: ExtensionContext, target:
       return undefined;
     }
   }
-
-
-  // TODO: check, if file is accessible, if not, return undefined
-  console.log(`locally accessible file: ${file}`);
-  
-  return file;
 }
 
 export async function runXSLTransformation(context?: ExtensionContext | undefined): Promise<void> 

@@ -18,7 +18,7 @@ export interface XSLTransformation
  * @param context the ExtensionContext
  * @returns stylesheet URI or undefined
  */
-function getStylesheetFromConfiguration(context?: ExtensionContext | undefined)
+async function getStylesheetFromConfiguration(context?: ExtensionContext | undefined)
 {
   let configuration = workspace.getConfiguration("xsl");
   let stylesheetConf = configuration.get<string>("stylesheet");
@@ -31,12 +31,12 @@ function getStylesheetFromConfiguration(context?: ExtensionContext | undefined)
 
   try 
   {
-    //await workspace.fs.stat(Uri.file(stylesheetConf!))
-    workspace.fs.stat(Uri.file(stylesheetConf!))
+    await workspace.fs.stat(Uri.file(stylesheetConf!))
+    //workspace.fs.stat(Uri.file(stylesheetConf!))
   } 
   catch (error) 
   {
-    window.showErrorMessage(`The configured XSL stylesheet does not exist. ${stylesheetConf}`);
+    window.showWarningMessage(`The configured XSL stylesheet does not exist. ${stylesheetConf}`);
     return;
   }
   //console.log(`Stylesheet from config: ${stylesheetConf}`);
@@ -49,7 +49,7 @@ function getStylesheetFromConfiguration(context?: ExtensionContext | undefined)
  * 
  * @returns stylesheet URI or undefined
  */
-function getStylesheetFromDocument()
+async function getStylesheetFromDocument()
 {
   let xml = window.activeTextEditor!.document.getText();
   if (xml.includes('<?xml-stylesheet')){
@@ -89,11 +89,15 @@ async function determineStylesheetToUse(context: ExtensionContext, stylesheetCon
 
   if (stylesheetDef == stylesheetConf){
     //if they are identical, just return one
+    console.log("Stylesheets are identical.");
+    
     return stylesheetConf;
   }
 
   if (stylesheetDef === undefined){
     // if only the stylesheet from the config is defined, just return that (as it has already been tested)
+    console.log("Use stylesheet from configurations.");
+    
     return stylesheetConf;
   }
   
@@ -102,16 +106,19 @@ async function determineStylesheetToUse(context: ExtensionContext, stylesheetCon
 
   if (stylesheetDefLocal === undefined){
     // stylesheet from definition could not be made accessible. Fall back to stylesheet from config (which might still be undefined.)
+    console.log("Stylesheet form Document processing instruction could not be made available.\nUse stylesheet from configurations, which might be undefined.");
     return stylesheetConf;
   }
 
   // if we make it here, stylesheetDefLocal exists and is accessible
 
   if (stylesheetConf === undefined) {
+    console.log("Use stylesheet from document processing instructions.");
     return stylesheetDefLocal;
   }
 
   // if we make it here, both are defined and accessible, so the user has to decide, which one to use.
+  console.log("Two stylesheets available. Let the user chose.");
   let options = ['From Stylesheet Declaration', 'From Settings']
   let choice = await window.showQuickPick(options, {
     placeHolder: "From which Stylesheet do you want to transform?"
@@ -151,6 +158,8 @@ function getLocallyAccessibleCopyOfStylesheet(context: ExtensionContext, target:
   res = tmpFile;
 
   // TODO: check, if file is accessible, if not, return undefined
+  console.log(`locally accessible file: ${res}`);
+  
 
   return res;
 }
@@ -172,8 +181,8 @@ export async function runXSLTransformation(context?: ExtensionContext | undefine
     return;
   }
 
-  let stylesheetConf = getStylesheetFromConfiguration(context);
-  let stylesheetDef = getStylesheetFromDocument();
+  let stylesheetConf = await getStylesheetFromConfiguration(context);
+  let stylesheetDef = await getStylesheetFromDocument();
   let stylesheetToUse = await determineStylesheetToUse(context!, stylesheetConf, stylesheetDef);
 
 

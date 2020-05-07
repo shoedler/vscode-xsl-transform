@@ -16,7 +16,7 @@ Supports both a configurable stylesheet association (stored as `xsl.stylesheet`)
 
 * A [Java](https://www.java.com/de/download/) installation. *Restart your Device after installation*  
 (Ensure Java is set in PATH by typing `java --version` in your console.)
-* The [Saxon XSL Processor](http://saxon.sourceforge.net/#F9.9HE) in the form of a jre.
+* The [Saxon XSL Processor](http://saxon.sourceforge.net/#F10HE) in the form of a jar.
 
 ## Quick Start
 

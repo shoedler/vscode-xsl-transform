@@ -3,7 +3,7 @@
 	"displayName": "XSL Transform",
 	"description": "An extension to perform XSL transformations with the Saxon XSLT processor",
 	"publisher": "WashirePie",
-	"version": "1.0.3",
+	"version": "1.1.0",
 	"license": "MIT",
 	"engines": {
 		"vscode": "^1.43.1"
@@ -58,7 +58,13 @@
 					"when": "editorLangId == xml || editorLangId == xsl"
 				}
 			]
-		}
+		},
+        "keybindings": [
+            {
+                "command": "xsl.transform",
+                "key": "ctrl+alt+t"
+            }
+        ]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

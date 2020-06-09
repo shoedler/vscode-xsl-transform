@@ -10,7 +10,10 @@ export function activate(context: ExtensionContext)
 {
   context.subscriptions.push(commands.registerCommand("xsl.transform", async () => 
   {
-    await runXSLTransformation();
+    await runXSLTransformation(context);
+    //FIXME: commented out stylesheet is still applied.
+    //LATER: settings for storing/deleting cached stylesheets
+    //LATER: can I include saxon directly in package?
   }));
 
   context.subscriptions.push(commands.registerCommand("xsl.setStylesheet", async () =>

@@ -1,4 +1,4 @@
-import { window, workspace } from "vscode";
+import { window, workspace, ConfigurationTarget } from "vscode";
 
 export async function setXSLStylesheet(): Promise<void> 
 {
@@ -19,6 +19,10 @@ export async function setXSLStylesheet(): Promise<void>
     return;
   }
 
-  configuration.update("stylesheet", xsltFile[0].fsPath);
-  window.showInformationMessage("Updated XSL Stylesheet");
+  let stylesheetPath = xsltFile[0].fsPath;
+
+  console.log('Entered: '+stylesheetPath);
+
+  configuration.update("stylesheet", stylesheetPath, ConfigurationTarget.Global);
+  window.showInformationMessage("Updated XSL Stylesheet: " + configuration.get("stylesheet"));
 }

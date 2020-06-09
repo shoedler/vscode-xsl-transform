@@ -8,7 +8,8 @@ export async function setXSLStylesheet(): Promise<void>
     canSelectFiles: true,
     canSelectFolders: false,
     canSelectMany: false,
-    filters: {
+    filters: 
+    {
       "xslt": ["xsl", "xslt"]
     }
   });

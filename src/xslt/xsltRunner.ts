@@ -19,7 +19,8 @@ export class Runner
 
     this._process.on("exit", async (code) => 
     {
-      if (code === 0) {
+      if (code === 0) 
+      {
         window.showInformationMessage("XSL Transformation successful");
         try 
         {

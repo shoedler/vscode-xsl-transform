@@ -59,12 +59,12 @@
 				}
 			]
 		},
-        "keybindings": [
-            {
-                "command": "xsl.transform",
-                "key": "ctrl+alt+t"
-            }
-        ]
+		"keybindings": [
+			{
+				"command": "xsl.transform",
+				"key": "ctrl+alt+t"
+			}
+		]
 	},
 	"scripts": {
 		"package": "vsce package",
@@ -79,10 +79,9 @@
 		"@types/node": "^10.12.21",
 		"@types/vscode": "^1.43.0",
 		"glob": "^7.1.4",
-		"mocha": "^6.2.3",
+		"mocha": "^10.2.0",
 		"tslint": "^6.1.0",
 		"typescript": "^3.3.1",
 		"vscode-test": "^1.2.0"
-	},
-	"dependencies": {}
+	}
 }

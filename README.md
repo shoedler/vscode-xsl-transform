@@ -1,10 +1,6 @@
-<img src="https://github.com/WashirePie/vscode-xsl-transform/blob/master/icon.png?raw=true" alt="icon" width="200">
+<img src="https://github.com/WashirePie/vscode-xsl-transform/blob/main/icon.png?raw=true" alt="icon" width="200">
 
 # XSL Transformation Extension for Visual Studio Code
-
-<p align="left">
-  <a href="https://github.com/WashirePie/vscode-xsl-transform"><img src="https://img.shields.io/github/workflow/status/WashirePie/vscode-xsl-transform/Node.js%20CI.svg?logo=github" alt="vsts"></a>
-</p>
 
 ## Description
 
@@ -53,6 +49,6 @@ Some ideas on potential future features:
 
 ## License
 
-XSL transform is licensed under [MIT License](https://github.com/WashirePie/vscode-xsl-transform/blob/master/LICENSE).
+XSL transform is licensed under [MIT License](https://github.com/WashirePie/vscode-xsl-transform/blob/main/LICENSE).
 
 > A fork of [Svens XSLT Extension](https://marketplace.visualstudio.com/items?itemName=SvenAGN.xslt-transform)
